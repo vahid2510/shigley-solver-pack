@@ -1,0 +1,2 @@
+An SDOF with m = 10 kg and k = 4000 N/m is base-excited by a harmonic acceleration of 0.2 g at 4 Hz.
+Assume damping ratio 0.02. Find the peak absolute displacement.

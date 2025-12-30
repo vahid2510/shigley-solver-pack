@@ -1,0 +1,1 @@
+Problem 219: Extension spring used for returning an actuator. Wire diameter = 10 mm, mean coil diameter = 80 mm, active coils = 11. Shear modulus G = 78 GPa. Working load F = 2.98 kN with initial tension 0.80 kN. Determine the spring rate, working extension, and shear stress.

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shigley Solver Pack · Product Help &amp; User Manual</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script defer src="help.js"></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Shigley Solver Pack</h1>
+      <p class="subtitle">
+        Comprehensive help manual for the integrated manual &amp; NLU-assisted
+        mechanical design solver suite.
+      </p>
+      <dl class="meta">
+        <div>
+          <dt>Primary reference</dt>
+          <dd>Shigley's Mechanical Engineering Design</dd>
+        </div>
+        <div>
+          <dt>Creator</dt>
+          <dd>vahid ahmadi khorami</dd>
+        </div>
+        <div>
+          <dt>Document version</dt>
+          <dd>1.0.0</dd>
+        </div>
+      </dl>
+      <div class="print-controls">
+        <button type="button" onclick="window.print()">
+          Print complete manual
+        </button>
+      </div>
+    </header>
+
+    <nav class="toc">
+      <h2>Table of contents</h2>
+      <ol>
+        <li><a href="#introduction">1. Introduction &amp; purpose</a></li>
+        <li>
+          <a href="#requirements">2. System requirements &amp; installation</a>
+        </li>
+        <li>
+          <a href="#architecture">3. Platform architecture overview</a>
+        </li>
+        <li><a href="#interface">4. Interface tour</a></li>
+        <li>
+          <a href="#quick-start">5. Quick start &amp; recommended workflow</a>
+        </li>
+        <li>
+          <a href="#auto-solver">6. Natural-Language auto-solver pipeline</a>
+        </li>
+        <li>
+          <a href="#manual-solver"
+            >7. Manual JSON solver workspace &amp; validation</a
+          >
+        </li>
+        <li>
+          <a href="#units-data">8. Units, data management &amp; versioning</a>
+        </li>
+        <li>
+          <a href="#reports-docs">9. Reporting, narratives &amp; printing</a>
+        </li>
+        <li>
+          <a href="#catalog">10. Solver catalog &amp; knowledge assets</a>
+        </li>
+        <li>
+          <a href="#formula-reference">11. Analytical formula reference</a>
+        </li>
+        <li>
+          <a href="#parameter-dictionary"
+            >12. Parameter dictionary &amp; naming standards</a
+          >
+        </li>
+        <li>
+          <a href="#themes">13. Themes, accessibility &amp; productivity tips</a>
+        </li>
+        <li>
+          <a href="#troubleshooting">14. Troubleshooting &amp; diagnostics</a>
+        </li>
+        <li>
+          <a href="#support">15. Support, governance &amp; acknowledgements</a>
+        </li>
+      </ol>
+    </nav>
+
+    <main>
+      <section id="introduction" data-section-title="Introduction &amp; purpose">
+        <div class="section-heading">
+          <h2>1. Introduction &amp; purpose</h2>
+          <button type="button" onclick="printSection('introduction')">
+            Print this section
+          </button>
+        </div>
+        <p>
+          Shigley Solver Pack streamlines the execution and documentation of mechanical
+          design calculations derived from <em>Shigley's Mechanical Engineering Design</em>.
+          The application unifies natural-language problem intelligence, curated solver
+          implementations, and modern reporting so that engineering teams can:
+        </p>
+        <ul>
+          <li>
+            Accelerate textbook-style problem solving through automated class detection
+            and data extraction.
+          </li>
+          <li>
+            Execute deterministic solvers with repeatable validation and rich
+            explanations.
+          </li>
+          <li>
+            Generate auditable records, including SI-based payloads and printable
+            narratives, suitable for design reviews, coursework, or knowledge capture.
+          </li>
+        </ul>
+        <p>
+          This manual is intended for engineering students, analysts, and educators who
+          require both rapid answers and transparent documentation. It covers functional
+          workflows, data standards, architectural concepts, troubleshooting, and support
+          procedures for long-term operation.
+        </p>
+      </section>
+
+      <section
+        id="requirements"
+        data-section-title="System requirements &amp; installation"
+      >
+        <div class="section-heading">
+          <h2>2. System requirements &amp; installation</h2>
+          <button type="button" onclick="printSection('requirements')">
+            Print this section
+          </button>
+        </div>
+        <h3>Supported platforms</h3>
+        <ul>
+          <li>Windows 10/11, macOS 12+, or modern Linux distribution.</li>
+          <li>Python 3.10 or newer, configured with <code>pip</code> access.</li>
+          <li>Optional: Microsoft HTML Help Workshop for compiling the CHM manual.</li>
+        </ul>
+        <h3>Installation steps</h3>
+        <ol>
+          <li>Clone or extract the repository into a writable workspace.</li>
+          <li>Create a virtual environment and activate it.</li>
+          <li>Install dependencies via <code>pip install -r requirements.txt</code>.</li>
+          <li>
+            Launch the application with
+            <code>streamlit run ui/app_manual_solver.py</code>.
+          </li>
+          <li>
+            (Optional) For natural-language parsing, install the
+            <code>problem_parsing_env</code> components as documented in the README.
+          </li>
+        </ol>
+        <h3>Browser &amp; security considerations</h3>
+        <ul>
+          <li>
+            Use a Chromium-based or Firefox browser to ensure MathJax rendering and
+            printing fidelity.
+          </li>
+          <li>
+            Permit pop-ups for the Streamlit host to enable report and manual windows.
+          </li>
+          <li>
+            Network access is required for MathJax CDN resources unless served locally.
+          </li>
+        </ul>
+      </section>
+
+      <section
+        id="architecture"
+        data-section-title="Platform architecture overview"
+      >
+        <div class="section-heading">
+          <h2>3. Platform architecture overview</h2>
+          <button type="button" onclick="printSection('architecture')">
+            Print this section
+          </button>
+        </div>
+        <p>
+          The Shigley Solver Pack is organized into modular layers that separate
+          presentation, orchestration, and domain logic.
+        </p>
+        <ol>
+          <li>
+            <strong>Presentation layer (Streamlit UI):</strong> Delivers the interactive
+            application, manages session state, theme controls, and all reporting
+            utilities.
+          </li>
+          <li>
+            <strong>Solver registry:</strong> Each solver in <code>solvers/</code> is
+            registered with metadata, input schema expectations, and docstrings that
+            explain formula provenance and assumptions.
+          </li>
+          <li>
+            <strong>Natural-language pipeline (optional):</strong> The
+            <code>problem_parsing_env</code> package performs class identification and
+            structured data extraction using NLP models. The UI gracefully degrades if
+            this package is absent.
+          </li>
+          <li>
+            <strong>Documentation assets:</strong> The help manual, solver catalog, and
+            inline explanations all share terminology and refer back to the Shigley text.
+          </li>
+        </ol>
+        <p>
+          Separation of concerns allows teams to extend solver logic, update the NLP
+          model, or rebrand the interface without destabilizing the rest of the system.
+          Continuous integration test suites should target solver correctness and unit
+          conversions wherever new functionality is introduced.
+        </p>
+      </section>
+
+      <section id="interface" data-section-title="Interface tour">
+        <div class="section-heading">
+          <h2>4. Interface tour</h2>
+          <button type="button" onclick="printSection('interface')">
+            Print this section
+          </button>
+        </div>
+        <h3>Primary navigation</h3>
+        <ul>
+          <li>
+            <strong>Auto Solve from Text:</strong> Guided natural-language entry, parser
+            feedback, and automatic solver execution.
+          </li>
+          <li>
+            <strong>Manual JSON Inputs:</strong> Direct interaction with solver payloads,
+            including structured unit dictionaries.
+          </li>
+          <li>
+            <strong>Solver Catalog:</strong> Searchable encyclopedia of available solvers,
+            their assumptions, and formulae.
+          </li>
+          <li>
+            <strong>Help Manual:</strong> Embedded access to this documentation plus
+            download and CHM compilation instructions.
+          </li>
+        </ul>
+        <h3>Sidebar controls</h3>
+        <ul>
+          <li>Theme selector and quick access to the help manual.</li>
+          <li>
+            Attribution callouts listing the reference textbook and creator credentials.
+          </li>
+          <li>
+            Optional navigation shortcuts (e.g., Git repository, release notes) when
+            integrated.
+          </li>
+        </ul>
+      </section>
+
+      <section
+        id="quick-start"
+        data-section-title="Quick start &amp; recommended workflow"
+      >
+        <div class="section-heading">
+          <h2>5. Quick start &amp; recommended workflow</h2>
+          <button type="button" onclick="printSection('quick-start')">
+            Print this section
+          </button>
+        </div>
+        <ol class="checklist">
+          <li>Launch the Streamlit interface and select a theme for readability.</li>
+          <li>
+            Review the solver catalog to familiarize yourself with available
+            computations.
+          </li>
+          <li>
+            Start with the <em>Auto Solve</em> tab for rapid validation, then refine or
+            audit via the manual workspace.
+          </li>
+          <li>
+            Capture clarifications or design notes in the dedicated problem statement
+            fields; they flow into printable reports.
+          </li>
+          <li>
+            Download SI JSON results and archive them alongside project deliverables.
+          </li>
+        </ol>
+        <p class="tip">
+          Tip: Use version control or structured storage (e.g., SharePoint, Git) to track
+          input payloads, outputs, and report PDFs for each design iteration.
+        </p>
+      </section>
+
+      <section
+        id="auto-solver"
+        data-section-title="Natural-Language auto-solver pipeline"
+      >
+        <div class="section-heading">
+          <h2>6. Natural-Language auto-solver pipeline</h2>
+          <button type="button" onclick="printSection('auto-solver')">
+            Print this section
+          </button>
+        </div>
+        <ol>
+          <li>
+            Paste the full problem statement, including all numeric data and units, into
+            the provided text area.
+          </li>
+          <li>
+            Review the suggested solver class, confidence score, and structured inputs.
+            Use the assumptions and ambiguities panels to identify missing information.
+          </li>
+          <li>
+            Trigger <strong>Solve automatically</strong>. The system first tries the NLP
+            solution path and falls back to the manual registry if necessary.
+          </li>
+          <li>
+            Assess the results, explanation narrative, and print-ready report. Adjust
+            inputs manually if additional context is required.
+          </li>
+        </ol>
+        <p>
+          The parser is trained on English textbook patterns. For multilingual input,
+          supply a precise English draft or bypass the auto-solver and use the manual tab.
+        </p>
+      </section>
+
+      <section
+        id="manual-solver"
+        data-section-title="Manual JSON solver workspace &amp; validation"
+      >
+        <div class="section-heading">
+          <h2>7. Manual JSON solver workspace &amp; validation</h2>
+          <button type="button" onclick="printSection('manual-solver')">
+            Print this section
+          </button>
+        </div>
+        <ol>
+          <li>Select a solver class; type to filter by name or topic.</li>
+          <li>
+            Study the documentation block sourced from the solver description or the
+            solver’s docstring.
+          </li>
+          <li>
+            Customize the JSON payload. Use structured quantity dictionaries whenever
+            unit provenance must be documented.
+          </li>
+          <li>
+            Record the engineering narrative in the problem statement field to propagate
+            it into reports.
+          </li>
+          <li>
+            Execute the solver. Any exceptions surface in the UI; review numeric domains,
+            required fields, and solver assumptions to resolve them.
+          </li>
+        </ol>
+        <p>
+          Validation best practices include peer review of JSON payloads, automated unit
+          tests for bespoke solvers, and cross-checking results against hand calculations
+          or authoritative examples from the Shigley text.
+        </p>
+      </section>
+
+      <section
+        id="units-data"
+        data-section-title="Units, data management &amp; versioning"
+      >
+        <div class="section-heading">
+          <h2>8. Units, data management &amp; versioning</h2>
+          <button type="button" onclick="printSection('units-data')">
+            Print this section
+          </button>
+        </div>
+        <p>
+          All internal computations are performed in SI units. Quantity dictionaries
+          capture the original engineering notation while standardizing the calculation
+          base.
+        </p>
+        <div class="code-sample">
+          <pre><code>{
+  "material": {
+    "E": {"value": 210.0, "unit": "GPa", "si": 210000000000.0},
+    "S_y": {"value": 350.0, "unit": "MPa", "si": 350000000.0}
+  },
+  "loads": {
+    "M": {"value": 2.8, "unit": "kN·m", "si": 2800.0},
+    "T": {"value": 1.6, "unit": "kN·m", "si": 1600.0}
+  }
+}</code></pre>
+        </div>
+        <p>
+          Recommended data management practices:
+        </p>
+        <ul>
+          <li>
+            Maintain a library of canonical payloads for recurring design scenarios.
+          </li>
+          <li>
+            Store solver outputs (JSON and PDF) under revision-controlled directories.
+          </li>
+          <li>
+            Synchronize manual notes with laboratory notebooks or collaborative design
+            platforms to ensure traceability.
+          </li>
+        </ul>
+      </section>
+
+      <section
+        id="reports-docs"
+        data-section-title="Reporting, narratives &amp; printing"
+      >
+        <div class="section-heading">
+          <h2>9. Reporting, narratives &amp; printing</h2>
+          <button type="button" onclick="printSection('reports-docs')">
+            Print this section
+          </button>
+        </div>
+        <p>
+          Each solver run surfaces a comprehensive report bundle:
+        </p>
+        <ol>
+          <li>
+            <strong>Results (JSON):</strong> Downloaded via the UI, containing raw SI
+            outputs and any intermediate values provided by the solver.
+          </li>
+          <li>
+            <strong>Solution explanation:</strong> MathJax-rendered narrative that can be
+            quoted in design logs or presentations.
+          </li>
+          <li>
+            <strong>Print full report:</strong> Launches a dedicated window that collates
+            the problem statement, parsed inputs, assumptions, results, and references.
+            Use the browser print dialog to export to PDF or hardcopy.
+          </li>
+        </ol>
+        <p>
+          Reports inherit the selected theme for visual consistency. For submission to
+          external stakeholders, the Monochrome theme yields the cleanest print output.
+        </p>
+      </section>
+
+      <section
+        id="catalog"
+        data-section-title="Solver catalog &amp; knowledge assets"
+      >
+        <div class="section-heading">
+          <h2>10. Solver catalog &amp; knowledge assets</h2>
+          <button type="button" onclick="printSection('catalog')">
+            Print this section
+          </button>
+        </div>
+        <p>
+          The catalog acts as a knowledge base for every registered solver. Each entry
+          covers:
+        </p>
+        <ul>
+          <li>Purpose and engineering context.</li>
+          <li>Required inputs and accepted units.</li>
+          <li>Core formulae and governing standards.</li>
+          <li>Outputs and recommended post-processing checks.</li>
+        </ul>
+        <p>
+          Extend the catalog by updating both <code>SOLVER_DESCRIPTIONS</code> and
+          <code>SOLVER_EXPLANATIONS</code> within the UI module when new solvers are
+          introduced.
+        </p>
+      </section>
+
+      <section
+        id="formula-reference"
+        data-section-title="Analytical formula reference"
+      >
+        <div class="section-heading">
+          <h2>11. Analytical formula reference</h2>
+          <button type="button" onclick="printSection('formula-reference')">
+            Print this section
+          </button>
+        </div>
+        <p>
+          The following selection highlights representative expressions implemented across
+          the solver suite. Consult the solver source for full derivations and
+          assumptions.
+        </p>
+        <table class="formula-table">
+          <thead>
+            <tr>
+              <th>Domain</th>
+              <th>Expression</th>
+              <th>Key variables</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Beam bending (UDL)</td>
+              <td>
+                \( M_{max} = \tfrac{q L^2}{8}, \quad \delta_{mid} = \tfrac{5 q L^4}{384 E I} \)
+              </td>
+              <td>\(q\) uniform load, \(L\) span, \(E\) modulus, \(I\) inertia.</td>
+            </tr>
+            <tr>
+              <td>Euler column buckling</td>
+              <td>\( P_{cr} = \frac{\pi^2 E I}{(K L)^2} \)</td>
+              <td>\(K\) effective length factor, \(L\) unsupported length.</td>
+            </tr>
+            <tr>
+              <td>Johnson column buckling</td>
+              <td>
+                \( P_{cr} = A S_y \left[1 - \frac{S_y}{2 \pi^2 E} \lambda^2 \right] \), \( \lambda = \frac{K L}{r} \)
+              </td>
+              <td>
+                \(A\) area, \(r\) radius of gyration, \(S_y\) yield strength.
+              </td>
+            </tr>
+            <tr>
+              <td>Power screw torque</td>
+              <td>
+                \( T_{total} = \tfrac{F d_m}{2} \tan(\alpha + \phi) + \tfrac{F \mu_{collar} d_{collar}}{2} \)
+              </td>
+              <td>
+                \(d_m\) mean diameter, \(\alpha\) lead angle, \(\phi\) friction angle.
+              </td>
+            </tr>
+            <tr>
+              <td>Shaft torsion</td>
+              <td>\( \tau_{max} = \tfrac{16 T}{\pi d^3}, \quad \theta = \tfrac{T L}{G J} \)</td>
+              <td>\(d\) diameter, \(G\) shear modulus, \(J\) polar inertia.</td>
+            </tr>
+            <tr>
+              <td>Von Mises criterion</td>
+              <td>
+                \( \sigma_{eq} = \sqrt{\tfrac{1}{2}[(\sigma_x-\sigma_y)^2 + (\sigma_y-\sigma_z)^2 + (\sigma_z-\sigma_x)^2] + 3(\tau_{xy}^2+\tau_{yz}^2+\tau_{zx}^2)} \)
+              </td>
+              <td>Principal stresses or stress tensor components.</td>
+            </tr>
+            <tr>
+              <td>Modified Goodman fatigue</td>
+              <td>\( \frac{\sigma_a}{S_e} + \frac{\sigma_m}{S_{ut}} = \frac{1}{n} \)</td>
+              <td>
+                \(S_e\) endurance limit, \(S_{ut}\) ultimate strength, \(n\) design factor.
+              </td>
+            </tr>
+            <tr>
+              <td>Rolling bearing L10 life</td>
+              <td>\( L_{10} = a_1 \left(\frac{C}{P}\right)^p 10^6 \)</td>
+              <td>
+                \(a_1\) reliability factor, \(C\) capacity, \(P\) equivalent load, \(p\) exponent.
+              </td>
+            </tr>
+            <tr>
+              <td>AGMA contact stress</td>
+              <td>
+                \( \sigma_H = Z_e \sqrt{\tfrac{W_t K_o K_v K_s K_m C_f}{b d_p I}} \)
+              </td>
+              <td>
+                Geometry factors \(I\), face width \(b\), tangential load \(W_t\), material factor \(Z_e\).
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section
+        id="parameter-dictionary"
+        data-section-title="Parameter dictionary &amp; naming standards"
+      >
+        <div class="section-heading">
+          <h2>12. Parameter dictionary &amp; naming standards</h2>
+          <button type="button" onclick="printSection('parameter-dictionary')">
+            Print this section
+          </button>
+        </div>
+        <p>
+          Consistent naming reduces ambiguity when sharing JSON payloads or reports.
+          Table 1 summarizes core groups; Table 2 captures selected domain-specific
+          symbols.
+        </p>
+        <h3>Table 1 – Core grouping conventions</h3>
+        <table class="glossary-table">
+          <thead>
+            <tr>
+              <th>Key</th>
+              <th>Description</th>
+              <th>Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>geometry</code></td>
+              <td>Dimensions, shape descriptors, section properties.</td>
+              <td><code>L</code>, <code>b</code>, <code>h</code>, <code>theta</code>.</td>
+            </tr>
+            <tr>
+              <td><code>material</code></td>
+              <td>Constitutive properties and strength values.</td>
+              <td><code>E</code>, <code>G</code>, <code>S_y</code>, <code>S_ut</code>.</td>
+            </tr>
+            <tr>
+              <td><code>loads</code></td>
+              <td>Applied forces, torques, stresses.</td>
+              <td><code>F</code>, <code>M</code>, <code>T</code>, <code>S_a</code>.</td>
+            </tr>
+            <tr>
+              <td><code>operating</code></td>
+              <td>Service conditions and kinematic parameters.</td>
+              <td><code>rpm</code>, <code>v</code>, duty cycles.</td>
+            </tr>
+            <tr>
+              <td><code>factors</code></td>
+              <td>Marin modifiers, AGMA factors, stress concentrations.</td>
+              <td><code>K_o</code>, <code>K_v</code>, <code>K_t</code>, <code>k_a</code>.</td>
+            </tr>
+            <tr>
+              <td><code>tribology</code></td>
+              <td>Coefficients of friction, lubrication data.</td>
+              <td><code>mu</code>, <code>mu_collar</code>.</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Table 2 – Selected domain-specific symbols</h3>
+        <table class="glossary-table">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Meaning</th>
+              <th>Typical unit</th>
+              <th>Used in</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>geometry.K</code></td>
+              <td>Column effective length factor</td>
+              <td>-</td>
+              <td>Euler/Johnson columns</td>
+            </tr>
+            <tr>
+              <td><code>geometry.d_m</code></td>
+              <td>Mean diameter of power screw threads</td>
+              <td>m</td>
+              <td>Power screw</td>
+            </tr>
+            <tr>
+              <td><code>loads.S_m</code></td>
+              <td>Mean stress</td>
+              <td>Pa</td>
+              <td>Fatigue solvers</td>
+            </tr>
+            <tr>
+              <td><code>loads.P</code></td>
+              <td>Equivalent bearing load</td>
+              <td>N</td>
+              <td>Bearing life calculators</td>
+            </tr>
+            <tr>
+              <td><code>factors.C_f</code></td>
+              <td>AGMA surface condition factor</td>
+              <td>-</td>
+              <td>Gear contact stress</td>
+            </tr>
+            <tr>
+              <td><code>marin.k_c</code></td>
+              <td>Loading factor for endurance limit</td>
+              <td>-</td>
+              <td>Fatigue endurance modifier</td>
+            </tr>
+            <tr>
+              <td><code>tribology.mu</code></td>
+              <td>Coefficient of friction</td>
+              <td>-</td>
+              <td>Power screw, belt, clutch</td>
+            </tr>
+            <tr>
+              <td><code>operating.rpm</code></td>
+              <td>Rotational speed</td>
+              <td>rev/min</td>
+              <td>Bearing life, shaft design</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section
+        id="themes"
+        data-section-title="Themes, accessibility &amp; productivity tips"
+      >
+        <div class="section-heading">
+          <h2>13. Themes, accessibility &amp; productivity tips</h2>
+          <button type="button" onclick="printSection('themes')">
+            Print this section
+          </button>
+        </div>
+        <ul>
+          <li>
+            <strong>Modern Light:</strong> Balanced contrast suited for projected
+            demonstrations and general use.
+          </li>
+          <li>
+            <strong>Monochrome:</strong> Optimized for grayscale printing and
+            photocopying.
+          </li>
+          <li>
+            <strong>Midnight Dark:</strong> Low-glare option for extended review sessions
+            or dim environments.
+          </li>
+        </ul>
+        <p>
+          Accessibility recommendations include enabling browser zoom controls, using the
+          manual problem statement field for screen-reader-friendly narration, and
+          exporting JSON data for integration with custom accessibility tooling.
+        </p>
+        <p>
+          Productivity tips:
+        </p>
+        <ul>
+          <li>
+            Save common payloads in a local snippet manager for rapid reuse via copy/paste.
+          </li>
+          <li>
+            Pair solver outputs with plotting libraries (e.g., Matplotlib, Plotly) to
+            visualize stress envelopes or life curves.
+          </li>
+          <li>
+            Embed JSON downloads in Jupyter notebooks for exploratory calculations or
+            Monte Carlo extensions.
+          </li>
+        </ul>
+      </section>
+
+      <section
+        id="troubleshooting"
+        data-section-title="Troubleshooting &amp; diagnostics"
+      >
+        <div class="section-heading">
+          <h2>14. Troubleshooting &amp; diagnostics</h2>
+          <button type="button" onclick="printSection('troubleshooting')">
+            Print this section
+          </button>
+        </div>
+        <h3>Common symptoms</h3>
+        <ul>
+          <li>
+            <strong>Solver returned no results:</strong> Verify required fields, confirm
+            JSON syntax, and review solver assumptions.
+          </li>
+          <li>
+            <strong>NLP parser unavailable:</strong> Install or repair the
+            <code>problem_parsing_env</code> package.
+          </li>
+          <li>
+            <strong>Report window blocked:</strong> Allow pop-ups or add the Streamlit
+            host to your browser’s exceptions list.
+          </li>
+          <li>
+            <strong>Math not rendering:</strong> Ensure MathJax scripts load (network
+            policy) or host MathJax locally.
+          </li>
+        </ul>
+        <h3>Diagnostic workflow</h3>
+        <ol>
+          <li>
+            Reproduce the issue using a minimal JSON payload or a known-good sample.
+          </li>
+          <li>
+            Inspect the Streamlit server log for stack traces when solver execution fails.
+          </li>
+          <li>
+            Leverage unit tests in <code>tests/</code> to confirm solver invariants remain
+            intact after modifications.
+          </li>
+          <li>
+            Document findings in the problem statement or project tracker for future
+            reference.
+          </li>
+        </ol>
+      </section>
+
+      <section
+        id="support"
+        data-section-title="Support, governance &amp; acknowledgements"
+      >
+        <div class="section-heading">
+          <h2>15. Support, governance &amp; acknowledgements</h2>
+          <button type="button" onclick="printSection('support')">
+            Print this section
+          </button>
+        </div>
+        <p>
+          Shigley Solver Pack is authored by <strong>vahid ahmadi khorami</strong> and
+          grounded in the methodologies of <em>Shigley's Mechanical Engineering Design</em>.
+          Governance recommendations include:
+        </p>
+        <ul>
+          <li>
+            Establish a release cadence documented in the project README and change log.
+          </li>
+          <li>
+            Require peer review for new solvers or modifications to existing computation
+            modules.
+          </li>
+          <li>
+            Track licensing compliance for third-party packages and communicate any
+            obligations to stakeholders.
+          </li>
+          <li>
+            Back up documentation artifacts (this manual, solver catalog exports, JSON
+            libraries) alongside code repositories.
+          </li>
+        </ul>
+        <p>
+          For assistance:
+        </p>
+        <ul>
+          <li>
+            Consult this manual and the in-app solver catalog for operational guidance.
+          </li>
+          <li>
+            Submit reproducible issues with payloads, solver class names, and expected
+            outcomes.
+          </li>
+          <li>
+            Provide feedback on wording, UI accessibility, or curriculum alignment to help
+            shape subsequent releases.
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        &copy; <span id="current-year"></span> vahid ahmadi khorami — Documentation
+        prepared for the Shigley Solver Pack.
+      </p>
+    </footer>
+  </body>
+</html>

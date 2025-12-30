@@ -1,0 +1,1 @@
+Problem 382: Required dynamic bearing rating for a conveyor take-up pulley. Equivalent load P = 26.2 kN at 1910 rpm. Desired service life = 32500 hours with reliability 0.95. Assume exponent p = 3. Determine the minimum dynamic rating C_required.

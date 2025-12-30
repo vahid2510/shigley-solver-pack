@@ -1,0 +1,52 @@
+{
+  "description": "Solid shaft torsion case #4",
+  "class": "shaft.torsion.solid",
+  "confidence": 1.0,
+  "inputs": {
+    "geometry": {
+      "L": {
+        "value": 1.2,
+        "unit": "m",
+        "si": 1.2
+      },
+      "d": {
+        "value": 36,
+        "unit": "mm",
+        "si": 0.036
+      }
+    },
+    "material": {
+      "G": {
+        "value": 79,
+        "unit": "GPa",
+        "si": 79000000000.0
+      }
+    },
+    "loads": {
+      "T": {
+        "value": 7.4,
+        "unit": "kN*m",
+        "si": 7400.0
+      }
+    }
+  },
+  "outputs": [
+    {
+      "metric": "tau_max",
+      "unit_pref": "MPa"
+    },
+    {
+      "metric": "theta",
+      "unit_pref": "rad"
+    },
+    {
+      "metric": "J",
+      "unit_pref": "m^4"
+    }
+  ],
+  "assumptions": [
+    "pure_torsion",
+    "linear_elastic"
+  ],
+  "ambiguities": []
+}

@@ -1,0 +1,1 @@
+Problem 222: Torsion spring for preloading a throttle linkage. Wire diameter 11 mm, mean coil diameter 58 mm, active coils 8. Shear modulus G = 83 GPa. The spring resists a torque of 0.590 kN*m. Compute the angular stiffness, twist angle, and maximum bending stress using Wahl's factor.

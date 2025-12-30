@@ -1,0 +1,1 @@
+Problem 329: Single-disc clutch under uniform wear for a steel rolling mill brake. Apply a normal clamping force of 27.0 kN with coefficient of friction mu = 0.32 -. The friction pair has inner radius 100 mm and outer radius 143 mm. Compute the available braking torque.

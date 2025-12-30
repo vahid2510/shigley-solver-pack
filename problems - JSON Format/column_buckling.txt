@@ -1,0 +1,2 @@
+A column with length L = 2.4 m has second moment I = 8.2e6 mm^4 and modulus E = 200 GPa.
+Both ends are pinned. Determine the Euler critical buckling load.

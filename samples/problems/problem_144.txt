@@ -1,0 +1,1 @@
+Problem 144: Euler buckling assessment for a slender column stabilizing a pipe rack. Clear length = 4.37 m with an effective length factor K = 0.75. Second moment of area I = 9.44e+07 mm^4 and elastic modulus E = 219 GPa. Evaluate the Euler critical load and comment on adequacy.

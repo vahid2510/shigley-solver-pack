@@ -1,0 +1,1 @@
+Problem 258: Flat belt transmitting power while linking a kiln ID fan. Tight-side tension T1 = 4340 N, slack-side tension T2 = 2730 N, belt speed = 25.6 m/s. Calculate the power conveyed and comment on the suitability for continuous duty.

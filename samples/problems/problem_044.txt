@@ -1,0 +1,1 @@
+Problem 044: Solid circular shaft in torsion. Shaft length = 1.52 m, diameter = 32 mm. Shear modulus G = 86 GPa. Apply a torque of 5.50 kN*m at the free end. Determine the maximum shear stress, polar moment of inertia, and angle of twist.

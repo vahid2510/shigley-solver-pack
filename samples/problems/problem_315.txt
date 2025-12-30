@@ -1,0 +1,1 @@
+Problem 315: Base-excited single-degree-of-freedom system supporting a vibration table. Mass m = 378 kg, stiffness k = 28500 N/m, damping ratio zeta = 0.039. Base acceleration amplitude = 2.08 m/s^2 at 6.25 Hz. Determine the steady-state displacement amplitude and transmissibility.

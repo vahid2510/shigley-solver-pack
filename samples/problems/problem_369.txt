@@ -1,0 +1,1 @@
+Problem 369: Equivalent dynamic load for a rolling bearing carrying a kiln trunnion. Radial load F_r = 20.8 kN, axial load F_a = 6.0 kN. Use rotation factor V = 1.15, load factors X = 0.60 and Y = 1.35, and threshold e = 0.34. Compute the equivalent load P and the ratio F_a/F_r.

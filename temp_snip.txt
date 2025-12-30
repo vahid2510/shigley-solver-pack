@@ -1,0 +1,401 @@
+import json
+import inspect
+import sys
+import uuid
+import functools
+import io
+import zipfile
+from pathlib import Path
+from typing import Any
+
+import html as html_lib
+import streamlit as st
+from streamlit.components.v1 import html as st_html
+from solvers.registry import REGISTRY
+
+
+# ---------------------------------------------------------------------------
+# Optional parser imports (for automatic detection from text problems)
+# ---------------------------------------------------------------------------
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+PARSER_ROOT = PROJECT_ROOT / "problem_parsing_env"
+build_spec = None
+solve_spec = None
+
+if PARSER_ROOT.exists():
+    sys.path.insert(0, str(PARSER_ROOT))
+    try:
+        from builder_core import build_spec  # type: ignore
+        from solver_core import solve as solve_spec  # type: ignore
+    except Exception:  # pragma: no cover - fallback for partial installs
+        build_spec = None
+        solve_spec = None
+
+
+st.set_page_config(page_title="Shigley Solver Pack", page_icon="[]", layout="wide")
+st.title("Shigley Solver Pack - Manual & Auto Solvers")
+
+st.sidebar.markdown("**Reference book:** Shigley's Mechanical Engineering Design")
+st.sidebar.markdown("**Creator:** vahid ahmadi khorami")
+
+HELP_ROOT = PROJECT_ROOT / "docs" / "help"
+HELP_INDEX = HELP_ROOT / "index.html"
+
+MANUAL_RAW_HTML = ""
+MANUAL_INLINE_HTML = ""
+MANUAL_ZIP_BYTES: bytes = b""
+MANUAL_LOAD_ERROR = ""
+MANUAL_INLINE_ESCAPED = ""
+
+THEME_CSS = {
+    "Modern Light": """
+    <style id="shigley-theme-css">
+    :root {
+        color-scheme: light;
+    }
+
+    body, .stApp, [data-testid="stAppViewContainer"] {
+        background: #eef2ff;
+        color: #0b1120;
+    }
+
+    [data-testid="stAppViewContainer"] > .main {
+        background: transparent;
+    }
+
+    [data-testid="stSidebar"] {
+        background: #ffffff;
+        color: #0b1120;
+        box-shadow: 4px 0 18px rgba(15, 23, 42, 0.06);
+    }
+
+    [data-testid="stHeader"] {
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(6px);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #0b1120;
+    }
+
+    .stMarkdown, .stMarkdown p, .stMarkdown span, .stMarkdown li, .stMarkdown pre {
+        color: #0b1120;
+        font-size: 0.98rem;
+    }
+
+    .stAlert p,
+    .stInfo {
+        color: #0b1120;
+    }
+
+    label, .stTextInput label, .stSelectbox label, .stTextArea label {
+        color: #0b1120;
+        font-weight: 600;
+    }
+
+    code {
+        color: #0b1120;
+    }
+
+    pre, code {
+        background: #f3f4ff;
+        border-radius: 8px;
+    }
+
+    textarea, input, select, .stTextArea textarea {
+        background: #fdfdff !important;
+        color: #0b1120 !important;
+        border: 1px solid #c7d2fe !important;
+        border-radius: 8px !important;
+        box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04);
+    }
+
+    textarea::placeholder, input::placeholder {
+        color: #64748b;
+    }
+
+    .stTabs [data-baseweb="tab"] {
+        color: #334155;
+        font-weight: 600;
+    }
+
+    .stTabs [data-baseweb="tab"]:hover {
+        color: #1d4ed8;
+    }
+
+    .stTabs [aria-selected="true"] {
+        color: #1d4ed8 !important;
+        border-bottom: 3px solid #3b82f6 !important;
+    }
+
+    .stButton > button {
+        background: linear-gradient(135deg, #2563eb, #3b82f6);
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        padding: 0.45rem 1.4rem;
+        box-shadow: 0 8px 18px rgba(37, 99, 235, 0.28);
+        transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+    }
+
+    .stButton > button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 28px rgba(37, 99, 235, 0.32);
+    }
+
+    .stDownloadButton > button {
+        border-radius: 6px;
+        border: 1px solid rgba(37, 99, 235, 0.28);
+        color: #0b1120;
+        background: #ffffff;
+    }
+
+    .print-report-button {
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+        color: #ffffff;
+    }
+
+    .print-report-button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 28px rgba(34, 197, 94, 0.3);
+    }
+    </style>
+    """,
+    "Monochrome": """
+    <style>
+    :root {
+        color-scheme: only light;
+    }
+
+    body, .stApp, [data-testid="stAppViewContainer"] {
+        background: #fafafa;
+        color: #121212;
+    }
+
+    [data-testid="stSidebar"] {
+        background: #ffffff;
+        color: #121212;
+        box-shadow: 3px 0 12px rgba(0, 0, 0, 0.05);
+    }
+
+    [data-testid="stHeader"] {
+        background: rgba(255, 255, 255, 0.95);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    h1, h2, h3, h4, h5, h6,
+    .stMarkdown, .stMarkdown p, .stMarkdown span, .stMarkdown li, .stMarkdown pre,
+    label, .stTextInput label, .stSelectbox label, .stTextArea label {
+        color: #121212;
+    }
+
+    pre, code {
+        background: #f0f0f0;
+        border-radius: 6px;
+    }
+
+    textarea, input, select, .stTextArea textarea {
+        background: #ffffff !important;
+        color: #121212 !important;
+        border: 1px solid #bdbdbd !important;
+        border-radius: 6px !important;
+    }
+
+    textarea::placeholder, input::placeholder {
+        color: #6b7280;
+    }
+
+    .stTabs [data-baseweb="tab"] {
+        color: #374151;
+        font-weight: 600;
+    }
+
+    .stTabs [data-baseweb="tab"]:hover {
+        color: #000000;
+    }
+
+    .stTabs [aria-selected="true"] {
+        color: #000000 !important;
+        border-bottom: 3px solid #000000 !important;
+    }
+
+    .stButton > button,
+    .stDownloadButton > button,
+    .print-report-button {
+        background: #111111;
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        padding: 0.45rem 1.4rem;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+        transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+    }
+
+    .stButton > button:hover,
+    .stDownloadButton > button:hover,
+    .print-report-button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+    }
+    </style>
+    """,
+    "Midnight Dark": """
+    <style>
+    :root {
+        color-scheme: dark;
+    }
+
+    body, .stApp, [data-testid="stAppViewContainer"] {
+        background: #0b1120;
+        color: #e2e8f0;
+    }
+
+    [data-testid="stAppViewContainer"] > .main {
+        background: transparent;
+    }
+
+    [data-testid="stSidebar"] {
+        background: #111827;
+        color: #e2e8f0;
+        box-shadow: 4px 0 18px rgba(2, 6, 23, 0.55);
+    }
+
+    [data-testid="stHeader"] {
+        background: rgba(15, 23, 42, 0.92);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #f8fafc;
+    }
+
+    .stMarkdown, .stMarkdown p, .stMarkdown span, .stMarkdown li, .stMarkdown pre {
+        color: #e2e8f0;
+    }
+
+    .stAlert p,
+    .stInfo {
+        color: #e2e8f0;
+    }
+
+    label, .stTextInput label, .stSelectbox label, .stTextArea label {
+        color: #f1f5f9;
+        font-weight: 600;
+    }
+
+    code {
+        color: #f8fafc;
+    }
+
+    pre, code {
+        background: #1e293b;
+        border-radius: 8px;
+    }
+
+    textarea, input, select, .stTextArea textarea {
+        background: #16213d !important;
+        color: #f8fafc !important;
+        border: 1px solid #334155 !important;
+        border-radius: 8px !important;
+        box-shadow: inset 0 1px 2px rgba(2, 6, 23, 0.45);
+    }
+
+    textarea::placeholder, input::placeholder {
+        color: #94a3b8;
+    }
+
+    .stTabs [data-baseweb="tab"] {
+        color: #cbd5f5;
+        font-weight: 600;
+    }
+
+    .stTabs [data-baseweb="tab"]:hover {
+        color: #60a5fa;
+    }
+
+    .stTabs [aria-selected="true"] {
+        color: #60a5fa !important;
+        border-bottom: 3px solid #60a5fa !important;
+    }
+
+    .stButton > button,
+    .stDownloadButton > button,
+    .print-report-button {
+        background: linear-gradient(135deg, #2563eb, #8b5cf6);
+        color: #f8fafc;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        padding: 0.45rem 1.4rem;
+        box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+        transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+    }
+
+    .stButton > button:hover,
+    .stDownloadButton > button:hover,
+    .print-report-button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 34px rgba(37, 99, 235, 0.48);
+    }
+    </style>
+    """,
+}
+
+if "ui_theme" not in st.session_state:
+    st.session_state["ui_theme"] = "Modern Light"
+
+theme_choice = st.sidebar.selectbox(
+    "Interface theme",
+    options=list(THEME_CSS.keys()),
+    index=list(THEME_CSS.keys()).index(st.session_state["ui_theme"]),
+)
+st.session_state["ui_theme"] = theme_choice
+st.markdown(THEME_CSS[theme_choice], unsafe_allow_html=True)
+
+if MANUAL_INLINE_ESCAPED and not MANUAL_LOAD_ERROR:
+    manual_sidebar_html = f"""
+<div class="manual-sidebar">
+  <button class="manual-sidebar-button" onclick="openSidebarHelpManual()">Open user manual</button>
+</div>
+<style>
+.manual-sidebar {{
+  margin-top: 12px;
+}}
+.manual-sidebar-button {{
+  width: 100%;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.25);
+  transition: transform 0.12s ease-in-out, box-shadow 0.12s ease-in-out;
+}}
+.manual-sidebar-button:hover {{
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(37, 99, 235, 0.32);
+}}
+</style>
+<script>
+window.__shigleyManualHtml = window.__shigleyManualHtml || {MANUAL_INLINE_ESCAPED};
+function openSidebarHelpManual() {{
+  const manualHtml = window.__shigleyManualHtml;
+  const w = window.open("", "_blank");
+  if (!w) {{
+    alert("Please allow pop-ups to display the help manual.");
+    return;
+  }}
+  w.document.open();
+  w.document.write(manualHtml);
+  w.document.close();
+}}
+</script>
+"""
+    with st.sidebar:
+        st_html(manual_sidebar_html, height=100)
+else:

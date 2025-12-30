@@ -1,0 +1,1 @@
+Problem 314: Base-excited single-degree-of-freedom system isolating a semiconductor stepper. Mass m = 450 kg, stiffness k = 24000 N/m, damping ratio zeta = 0.055. Base acceleration amplitude = 1.84 m/s^2 at 6.95 Hz. Determine the steady-state displacement amplitude and transmissibility.

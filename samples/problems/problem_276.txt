@@ -1,0 +1,1 @@
+Problem 276: Flat belt tension ratio evaluation on a drying oven conveyor. Coefficient of friction mu = 0.310 and wrap angle = 157 degrees around the smaller pulley. Determine the tension ratio T1/T2 required to prevent slip.

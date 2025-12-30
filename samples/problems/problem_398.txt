@@ -1,0 +1,1 @@
+Problem 398: Bearing life estimate for a slurry pump. Catalog dynamic rating C = 50.0 kN, equivalent load P = 10.4 kN, operating speed = 1760 rpm. Target reliability 0.95 with exponent p = 3. Compute L10 life in hours and revolutions.

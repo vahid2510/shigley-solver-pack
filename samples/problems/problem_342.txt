@@ -1,0 +1,1 @@
+Problem 342: Single-disc clutch under uniform pressure for a test stand dynamometer. Normal force = 19.2 kN, coefficient of friction mu = 0.29 -. Friction liner inner radius = 78 mm and outer radius = 125 mm. Determine the transmitted torque capacity.

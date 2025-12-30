@@ -1,0 +1,1 @@
+Problem 134: Thin-walled cylindrical pressure vessel delivering superheated steam while buffering a compressor surge. Internal pressure p = 1.80 MPa, inner radius R = 0.58 m, wall thickness t = 19 mm. Material allowable yield strength Sy = 180 MPa. Compute hoop and longitudinal membrane stresses and verify the thin-wall assumption.

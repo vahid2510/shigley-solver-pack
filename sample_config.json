@@ -1,0 +1,4 @@
+{
+  "per_topic": 15,
+  "notes": "Use shigley_problem_harvester.py to create harvest_all.json, then make_dataset.py to select per-topic items."
+}

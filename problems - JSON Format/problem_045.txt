@@ -1,0 +1,41 @@
+{
+  "description": "Thin-walled cylinder case #45",
+  "class": "pv.cylinder.thin",
+  "confidence": 1.0,
+  "inputs": {
+    "geometry": {
+      "R": {
+        "value": 0.51,
+        "unit": "m",
+        "si": 0.51
+      },
+      "t": {
+        "value": 13,
+        "unit": "mm",
+        "si": 0.013
+      }
+    },
+    "loads": {
+      "p": {
+        "value": 1.6800000000000002,
+        "unit": "MPa",
+        "si": 1680000.0000000002
+      }
+    }
+  },
+  "outputs": [
+    {
+      "metric": "sigma_hoop",
+      "unit_pref": "MPa"
+    },
+    {
+      "metric": "sigma_longitudinal",
+      "unit_pref": "MPa"
+    }
+  ],
+  "assumptions": [
+    "thin_wall",
+    "uniform_pressure"
+  ],
+  "ambiguities": []
+}

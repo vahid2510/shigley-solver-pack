@@ -1,0 +1,42 @@
+{
+  "description": "Euler column case #46",
+  "class": "column.euler",
+  "confidence": 1.0,
+  "inputs": {
+    "material": {
+      "E": {
+        "value": 200,
+        "unit": "GPa",
+        "si": 200000000000.0
+      }
+    },
+    "geometry": {
+      "I": {
+        "value": 90200000.0,
+        "unit": "mm^4",
+        "si": 9.02e-05
+      },
+      "L": {
+        "value": 3.7199999999999998,
+        "unit": "m",
+        "si": 3.7199999999999998
+      },
+      "K": {
+        "value": 0.7999999999999999,
+        "unit": "-",
+        "si": 0.7999999999999999
+      }
+    }
+  },
+  "outputs": [
+    {
+      "metric": "P_cr",
+      "unit_pref": "kN"
+    }
+  ],
+  "assumptions": [
+    "ideal_column",
+    "axial_load_only"
+  ],
+  "ambiguities": []
+}

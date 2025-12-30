@@ -1,0 +1,36 @@
+{
+  "description": "Fillet weld shear case #68",
+  "class": "weld.fillet.linear",
+  "confidence": 1.0,
+  "inputs": {
+    "geometry": {
+      "t": {
+        "value": 10,
+        "unit": "mm",
+        "si": 0.01
+      },
+      "Lw": {
+        "value": 136,
+        "unit": "mm",
+        "si": 0.136
+      }
+    },
+    "loads": {
+      "F": {
+        "value": 25.0,
+        "unit": "kN",
+        "si": 25000.0
+      }
+    }
+  },
+  "outputs": [
+    {
+      "metric": "tau",
+      "unit_pref": "MPa"
+    }
+  ],
+  "assumptions": [
+    "uniform_shear_distribution"
+  ],
+  "ambiguities": []
+}

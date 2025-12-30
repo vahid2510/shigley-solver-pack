@@ -1,0 +1,1 @@
+Problem 017: Flat belt power transmission. Tight-side tension T1 = 3800 N. Slack-side tension T2 = 2190 N. Belt speed = 20.0 m/s. Compute the transmitted power and comment on suitability for continuous duty.

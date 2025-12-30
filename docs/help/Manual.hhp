@@ -1,0 +1,15 @@
+[OPTIONS]
+Binary TOC=Yes
+Compatibility=1.1 or later
+Compiled file=ShigleySolverManual.chm
+Contents file=Manual.hhc
+Default topic=index.html
+Display compile progress=No
+Full-text search=Yes
+Index file=Manual.hhk
+Language=0x409 English (United States)
+
+[FILES]
+index.html
+style.css
+help.js

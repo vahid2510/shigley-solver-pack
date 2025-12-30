@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+  <meta charset="utf-8">
+</HEAD>
+<BODY>
+  <UL>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="architecture">
+      <param name="Local" value="index.html#architecture">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="auto solve">
+      <param name="Local" value="index.html#auto-solver">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="beam deflection">
+      <param name="Local" value="index.html#formula-reference">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="data management">
+      <param name="Local" value="index.html#units-data">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="documentation">
+      <param name="Local" value="index.html#reports-docs">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="formula reference">
+      <param name="Local" value="index.html#formula-reference">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="manual solver">
+      <param name="Local" value="index.html#manual-solver">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="parameter glossary">
+      <param name="Local" value="index.html#parameter-dictionary">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="reports">
+      <param name="Local" value="index.html#reports-docs">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="solver catalog">
+      <param name="Local" value="index.html#catalog">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="themes">
+      <param name="Local" value="index.html#themes">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="troubleshooting">
+      <param name="Local" value="index.html#troubleshooting">
+    </OBJECT></LI>
+  </UL>
+</BODY>
+</HTML>

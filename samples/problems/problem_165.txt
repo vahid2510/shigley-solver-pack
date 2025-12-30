@@ -1,0 +1,1 @@
+Problem 165: Solid circular shaft in torsion while coupling a kiln feed conveyor. Shaft length = 1.46 m and diameter = 44 mm. Shear modulus G = 91 GPa. Transmit a torque of 7.40 kN*m at steady speed. Determine the maximum shear stress, polar moment of inertia, and angle of twist.

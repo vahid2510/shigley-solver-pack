@@ -1,0 +1,62 @@
+{
+  "description": "Simply supported beam with uniform load case #81",
+  "class": "beam.eb.simply_supported.udl",
+  "confidence": 1.0,
+  "inputs": {
+    "geometry": {
+      "L": {
+        "value": 3.04,
+        "unit": "m",
+        "si": 3.04
+      },
+      "section": {
+        "b": {
+          "value": 55,
+          "unit": "mm",
+          "si": 0.055
+        },
+        "h": {
+          "value": 74,
+          "unit": "mm",
+          "si": 0.074
+        }
+      }
+    },
+    "material": {
+      "E": {
+        "value": 209,
+        "unit": "GPa",
+        "si": 209000000000.0
+      }
+    },
+    "loads": [
+      {
+        "type": "uniform",
+        "q": {
+          "value": 6.25,
+          "unit": "kN/m",
+          "si": 6250.0
+        }
+      }
+    ]
+  },
+  "outputs": [
+    {
+      "metric": "delta_mid",
+      "unit_pref": "mm"
+    },
+    {
+      "metric": "M_max",
+      "unit_pref": "kN*m"
+    },
+    {
+      "metric": "R_support",
+      "unit_pref": "kN"
+    }
+  ],
+  "assumptions": [
+    "small_deflection",
+    "plane_sections_remain_plane"
+  ],
+  "ambiguities": []
+}

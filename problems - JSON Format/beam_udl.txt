@@ -1,0 +1,3 @@
+A simply supported steel beam of span 2 m with a rectangular section 40 mm by 60 mm.
+The beam carries a uniformly distributed load of 5 kN/m over the entire span.
+Take E = 210 GPa, nu = 0.3. Determine the midspan deflection and the maximum bending stress.

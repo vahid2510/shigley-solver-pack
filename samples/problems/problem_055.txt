@@ -1,0 +1,1 @@
+Problem 055: Helical compression spring design. Wire diameter = 9 mm, mean coil diameter = 71 mm, active coils = 9. Shear modulus G = 79 GPa. Working load F = 2.72 kN. Compute spring rate, operating deflection, and maximum shear stress using the Wahl factor.

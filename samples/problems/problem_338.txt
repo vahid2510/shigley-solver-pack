@@ -1,0 +1,1 @@
+Problem 338: Single-disc clutch under uniform wear for a wind turbine yaw brake. Apply a normal clamping force of 27.0 kN with coefficient of friction mu = 0.34 -. The friction pair has inner radius 91 mm and outer radius 143 mm. Compute the available braking torque.

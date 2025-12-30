@@ -1,0 +1,47 @@
+{
+  "description": "Bolt preload proof case #60",
+  "class": "bolt.preload_proof",
+  "confidence": 1.0,
+  "inputs": {
+    "geometry": {
+      "A_t": {
+        "value": 285,
+        "unit": "mm^2",
+        "si": 0.000285
+      },
+      "n": 9
+    },
+    "material": {
+      "S_p": {
+        "value": 720,
+        "unit": "MPa",
+        "si": 720000000.0
+      }
+    },
+    "loads": {
+      "F_external": {
+        "value": 23.5,
+        "unit": "kN",
+        "si": 23500.0
+      }
+    }
+  },
+  "outputs": [
+    {
+      "metric": "F_pre_per_bolt",
+      "unit_pref": "kN"
+    },
+    {
+      "metric": "sigma_at_preload",
+      "unit_pref": "MPa"
+    },
+    {
+      "metric": "joint_clamp_reserve",
+      "unit_pref": "kN"
+    }
+  ],
+  "assumptions": [
+    "preload_factor_0.75"
+  ],
+  "ambiguities": []
+}

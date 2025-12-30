@@ -1,0 +1,1 @@
+Problem 001: Simply supported beam with uniform load. Span length L = 2.52 m with a rectangular section 48 mm by 74 mm. Supports are pinned at the left end and roller at the right end. Apply a uniformly distributed load of 5.25 kN/m across the entire span. Use Young's modulus E = 205 GPa and Poisson ratio nu = 0.30. Compute the midspan deflection and maximum bending stress.

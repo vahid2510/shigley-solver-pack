@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+  <meta charset="utf-8">
+</HEAD>
+<BODY>
+  <OBJECT type="text/site properties">
+    <param name="FrameName" value="tocFrame">
+  </OBJECT>
+  <UL>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="1. Introduction &amp; purpose">
+      <param name="Local" value="index.html#introduction">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="2. System requirements &amp; installation">
+      <param name="Local" value="index.html#requirements">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="3. Platform architecture overview">
+      <param name="Local" value="index.html#architecture">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="4. Interface tour">
+      <param name="Local" value="index.html#interface">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="5. Quick start &amp; recommended workflow">
+      <param name="Local" value="index.html#quick-start">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="6. Natural-Language auto-solver pipeline">
+      <param name="Local" value="index.html#auto-solver">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="7. Manual JSON solver workspace &amp; validation">
+      <param name="Local" value="index.html#manual-solver">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="8. Units, data management &amp; versioning">
+      <param name="Local" value="index.html#units-data">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="9. Reporting, narratives &amp; printing">
+      <param name="Local" value="index.html#reports-docs">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="10. Solver catalog &amp; knowledge assets">
+      <param name="Local" value="index.html#catalog">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="11. Analytical formula reference">
+      <param name="Local" value="index.html#formula-reference">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="12. Parameter dictionary &amp; naming standards">
+      <param name="Local" value="index.html#parameter-dictionary">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="13. Themes, accessibility &amp; productivity tips">
+      <param name="Local" value="index.html#themes">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="14. Troubleshooting &amp; diagnostics">
+      <param name="Local" value="index.html#troubleshooting">
+    </OBJECT></LI>
+    <LI> <OBJECT type="text/sitemap">
+      <param name="Name" value="15. Support, governance &amp; acknowledgements">
+      <param name="Local" value="index.html#support">
+    </OBJECT></LI>
+  </UL>
+</BODY>
+</HTML>

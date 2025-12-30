@@ -1,0 +1,36 @@
+{
+  "description": "Flat belt power case #59",
+  "class": "belt.flat.power",
+  "confidence": 1.0,
+  "inputs": {
+    "loads": {
+      "T1": {
+        "value": 4680,
+        "unit": "N",
+        "si": 4680
+      },
+      "T2": {
+        "value": 2870,
+        "unit": "N",
+        "si": 2870
+      }
+    },
+    "operating": {
+      "v": {
+        "value": 26.4,
+        "unit": "m/s",
+        "si": 26.4
+      }
+    }
+  },
+  "outputs": [
+    {
+      "metric": "P",
+      "unit_pref": "kW"
+    }
+  ],
+  "assumptions": [
+    "steady_state"
+  ],
+  "ambiguities": []
+}

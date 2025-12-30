@@ -1,0 +1,1 @@
+Problem 220: Extension spring used for supporting a trim press. Wire diameter = 12 mm, mean coil diameter = 68 mm, active coils = 12. Shear modulus G = 80 GPa. Working load F = 2.08 kN with initial tension 0.70 kN. Determine the spring rate, working extension, and shear stress.

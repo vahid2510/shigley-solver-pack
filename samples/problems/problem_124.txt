@@ -1,0 +1,1 @@
+Problem 124: Thin-walled cylindrical pressure vessel delivering superheated steam while feeding a spray dryer. Internal pressure p = 1.90 MPa, inner radius R = 0.54 m, wall thickness t = 15 mm. Material allowable yield strength Sy = 180 MPa. Compute hoop and longitudinal membrane stresses and verify the thin-wall assumption.

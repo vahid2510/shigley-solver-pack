@@ -1,0 +1,59 @@
+{
+  "description": "Cantilever tip load case #13",
+  "class": "beam.cantilever.point_end",
+  "confidence": 1.0,
+  "inputs": {
+    "geometry": {
+      "L": {
+        "value": 1.87,
+        "unit": "m",
+        "si": 1.87
+      },
+      "section": {
+        "b": {
+          "value": 44,
+          "unit": "mm",
+          "si": 0.044
+        },
+        "h": {
+          "value": 81,
+          "unit": "mm",
+          "si": 0.081
+        }
+      }
+    },
+    "material": {
+      "E": {
+        "value": 208,
+        "unit": "GPa",
+        "si": 208000000000.0
+      }
+    },
+    "loads": [
+      {
+        "type": "point",
+        "at": "free",
+        "P": {
+          "value": 8.0,
+          "unit": "kN",
+          "si": 8000.0
+        }
+      }
+    ]
+  },
+  "outputs": [
+    {
+      "metric": "delta_tip",
+      "unit_pref": "mm"
+    },
+    {
+      "metric": "M_max",
+      "unit_pref": "kN*m"
+    }
+  ],
+  "assumptions": [
+    "small_deflection",
+    "fixed_support_ideal"
+  ],
+  "ambiguities": []
+}

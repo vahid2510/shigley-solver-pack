@@ -1,0 +1,1 @@
+Problem 375: Required dynamic bearing rating for a pulp refiner. Equivalent load P = 23.4 kN at 2150 rpm. Desired service life = 29500 hours with reliability 0.97. Assume exponent p = 3. Determine the minimum dynamic rating C_required.

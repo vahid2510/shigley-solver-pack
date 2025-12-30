@@ -1,0 +1,1 @@
+Problem 131: Thin-walled cylindrical pressure vessel delivering nitrogen purge gas while charging a cleaning skid. Internal pressure p = 1.90 MPa, inner radius R = 0.58 m, wall thickness t = 19 mm. Material allowable yield strength Sy = 165 MPa. Compute hoop and longitudinal membrane stresses and verify the thin-wall assumption.

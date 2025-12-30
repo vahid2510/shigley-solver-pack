@@ -1,0 +1,1 @@
+Problem 198: Helical compression spring for controlling an elevator buffer. Wire diameter = 11 mm, mean coil diameter = 98 mm, active coils = 10. Shear modulus G = 88 GPa. The spring carries a working load of 4.00 kN. Compute the spring rate, working deflection, and peak shear stress using the Wahl factor.

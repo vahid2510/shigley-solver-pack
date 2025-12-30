@@ -1,0 +1,57 @@
+{
+  "description": "Compression spring case #27",
+  "class": "spring.helical.compression",
+  "confidence": 1.0,
+  "inputs": {
+    "geometry": {
+      "d": {
+        "value": 10,
+        "unit": "mm",
+        "si": 0.01
+      },
+      "D": {
+        "value": 86,
+        "unit": "mm",
+        "si": 0.086
+      },
+      "n_a": {
+        "value": 10.0,
+        "unit": "-",
+        "si": 10.0
+      }
+    },
+    "material": {
+      "G": {
+        "value": 85,
+        "unit": "GPa",
+        "si": 85000000000.0
+      }
+    },
+    "loads": {
+      "F": {
+        "value": 2.18,
+        "unit": "kN",
+        "si": 2180.0
+      }
+    }
+  },
+  "outputs": [
+    {
+      "metric": "k",
+      "unit_pref": "kN/m"
+    },
+    {
+      "metric": "deflection",
+      "unit_pref": "mm"
+    },
+    {
+      "metric": "tau_max",
+      "unit_pref": "MPa"
+    }
+  ],
+  "assumptions": [
+    "linear_spring",
+    "static_loading"
+  ],
+  "ambiguities": []
+}

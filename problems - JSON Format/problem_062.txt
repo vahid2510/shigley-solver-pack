@@ -1,0 +1,59 @@
+{
+  "description": "Midspan point load beam case #62",
+  "class": "beam.eb.simply_supported.point_mid",
+  "confidence": 1.0,
+  "inputs": {
+    "geometry": {
+      "L": {
+        "value": 3.5199999999999996,
+        "unit": "m",
+        "si": 3.5199999999999996
+      },
+      "section": {
+        "b": {
+          "value": 59,
+          "unit": "mm",
+          "si": 0.059
+        },
+        "h": {
+          "value": 95,
+          "unit": "mm",
+          "si": 0.095
+        }
+      }
+    },
+    "material": {
+      "E": {
+        "value": 204,
+        "unit": "GPa",
+        "si": 204000000000.0
+      }
+    },
+    "loads": [
+      {
+        "type": "point",
+        "at": "mid",
+        "P": {
+          "value": 13.2,
+          "unit": "kN",
+          "si": 13200.0
+        }
+      }
+    ]
+  },
+  "outputs": [
+    {
+      "metric": "delta_mid",
+      "unit_pref": "mm"
+    },
+    {
+      "metric": "M_max",
+      "unit_pref": "kN*m"
+    }
+  ],
+  "assumptions": [
+    "small_deflection",
+    "plane_sections_remain_plane"
+  ],
+  "ambiguities": []
+}

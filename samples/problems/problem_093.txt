@@ -1,0 +1,1 @@
+Problem 093: Euler buckling check for a slender column. Column length = 4.82 m with both ends pinned. Second moment of area I = 8.94e+07 mm^4. Elastic modulus E = 205 GPa. Find the Euler critical load and comment on the safety margin.

@@ -1,0 +1,1 @@
+Problem 060: Base-excited SDOF system under harmonic motion. Mass m = 420 kg and stiffness k = 18000 N/m. Damping ratio zeta = 0.030. Base acceleration amplitude = 1.70 m/s^2 at excitation frequency 6.00 Hz. Compute the steady-state displacement amplitude and transmissibility.

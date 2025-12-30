@@ -1,0 +1,61 @@
+notches:
+  shoulder_fillet:
+    description: "Stepped shaft with shoulder fillet under bending/torsion"
+    parameters:
+      d_large: "Larger diameter (m)"
+      d_small: "Smaller diameter (m)"
+      r: "Fillet radius (m)"
+    data:
+      # (d/D ratio, r/d ratio) -> (Kt_bending, Kts_torsion)
+      - d_over_D: 0.5
+        r_over_d: 0.02
+        Kt_bending: 1.7
+        Kts_torsion: 1.5
+      - d_over_D: 0.5
+        r_over_d: 0.05
+        Kt_bending: 1.5
+        Kts_torsion: 1.4
+      - d_over_D: 0.6
+        r_over_d: 0.02
+        Kt_bending: 1.6
+        Kts_torsion: 1.45
+      - d_over_D: 0.6
+        r_over_d: 0.05
+        Kt_bending: 1.4
+        Kts_torsion: 1.35
+      - d_over_D: 0.8
+        r_over_d: 0.02
+        Kt_bending: 1.35
+        Kts_torsion: 1.25
+      - d_over_D: 0.8
+        r_over_d: 0.05
+        Kt_bending: 1.25
+        Kts_torsion: 1.2
+  groove:
+    description: "Shaft with circumferential U-groove"
+    parameters:
+      d: "Shaft diameter (m)"
+      groove_width: "Groove width (m)"
+      groove_depth: "Groove depth (m)"
+      r_root: "Groove root radius (m)"
+    data:
+      - w_over_d: 0.1
+        a_over_d: 0.05
+        r_over_d: 0.02
+        Kt_bending: 2.1
+        Kts_torsion: 1.9
+      - w_over_d: 0.1
+        a_over_d: 0.05
+        r_over_d: 0.05
+        Kt_bending: 1.8
+        Kts_torsion: 1.6
+      - w_over_d: 0.15
+        a_over_d: 0.08
+        r_over_d: 0.02
+        Kt_bending: 2.3
+        Kts_torsion: 2.1
+      - w_over_d: 0.15
+        a_over_d: 0.08
+        r_over_d: 0.05
+        Kt_bending: 2.0
+        Kts_torsion: 1.8

@@ -1,0 +1,38 @@
+
+# Topic → regex keywords and default solver class
+beams:
+  keywords: ["beam", "simply supported", "cantilever", "moment", "deflection", "shear"]
+  solver: "beam.eb.simply_supported.udl"
+torsion_shafts:
+  keywords: ["shaft", "torsion", "twist", "angle of twist", "torque"]
+  solver: "shaft.torsion.solid"
+fatigue:
+  keywords: ["endurance", "fatigue", "S-N", "Goodman", "Gerber", "Soderberg", "mean stress"]
+  solver: "fatigue.goodman"
+gears:
+  keywords: ["gear", "tooth", "AGMA", "contact stress", "bending stress"]
+  solver: "gear.spur.agma_bending_basic"
+springs:
+  keywords: ["spring", "helical", "deflection", "Wahl"]
+  solver: "spring.helical.compression"
+fasteners_bolts:
+  keywords: ["bolt", "screw", "preload", "proof strength"]
+  solver: "bolt.preload_proof"
+welds:
+  keywords: ["weld", "fillet", "throat", "leg", "group"]
+  solver: "weld.fillet.linear"
+bearings:
+  keywords: ["bearing", "L10", "life", "ABMA"]
+  solver: "bearing.ball.L10"
+pressure_vessels:
+  keywords: ["pressure vessel", "thin-walled", "cylinder", "hoop", "longitudinal"]
+  solver: "pv.cylinder.thin"
+buckling:
+  keywords: ["column", "buckling", "Euler", "Johnson", "slenderness"]
+  solver: "column.euler"
+belts_clutches_brakes:
+  keywords: ["belt", "clutch", "brake", "friction", "tension ratio"]
+  solver: "belt.flat.tension_ratio"
+fits_interference:
+  keywords: ["interference", "press fit", "shrink fit"]
+  solver: "fit.press.interference"

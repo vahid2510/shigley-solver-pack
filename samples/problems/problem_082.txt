@@ -1,0 +1,1 @@
+Problem 082: Thin-walled cylindrical pressure vessel. Internal pressure p = 1.60 MPa. Inner radius R = 0.40 m. Wall thickness t = 13 mm. Material yield strength Sy = 165 MPa. Determine hoop and longitudinal membrane stresses and discuss compliance with thin-wall assumptions.

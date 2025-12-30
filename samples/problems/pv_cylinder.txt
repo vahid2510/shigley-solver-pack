@@ -1,0 +1,2 @@
+A thin-walled cylindrical vessel of radius 0.5 m and wall thickness 6 mm is subjected to an internal pressure of 2 MPa.
+Determine the hoop and longitudinal stresses and the factor of safety if sigma_y = 250 MPa.

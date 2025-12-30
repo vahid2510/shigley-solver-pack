@@ -1,0 +1,1 @@
+Problem 164: Solid circular shaft in torsion while turning a heavy-duty mixer. Shaft length = 1.70 m and diameter = 52 mm. Shear modulus G = 88 GPa. Transmit a torque of 9.40 kN*m at steady speed. Determine the maximum shear stress, polar moment of inertia, and angle of twist.

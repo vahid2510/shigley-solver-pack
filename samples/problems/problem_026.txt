@@ -1,0 +1,1 @@
+Problem 026: Extension spring application. Design an extension spring with wire diameter 8 mm, mean coil diameter 76 mm, and active coils 12. Shear modulus G = 81 GPa. Apply a working load F = 2.20 kN and initial tension = 0.60 kN. Determine the spring rate, working extension, and shear stress.

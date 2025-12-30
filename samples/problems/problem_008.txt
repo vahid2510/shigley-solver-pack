@@ -1,0 +1,1 @@
+Problem 008: Flat belt tension ratio. Given a belt drive with coefficient of friction mu = 0.29 and wrap angle 165 degrees on the smaller pulley, determine the tension ratio T1/T2 for impending slip.

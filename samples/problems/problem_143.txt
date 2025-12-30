@@ -1,0 +1,1 @@
+Problem 143: Euler buckling assessment for a slender column bracing a conveyor tower. Clear length = 4.19 m with an effective length factor K = 0.65. Second moment of area I = 8.12e+07 mm^4 and elastic modulus E = 212 GPa. Evaluate the Euler critical load and comment on adequacy.

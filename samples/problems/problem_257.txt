@@ -1,0 +1,1 @@
+Problem 257: Flat belt transmitting power while powering a chilled-water pump. Tight-side tension T1 = 5040 N, slack-side tension T2 = 2400 N, belt speed = 23.0 m/s. Calculate the power conveyed and comment on the suitability for continuous duty.
